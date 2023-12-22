@@ -2,10 +2,10 @@
 This set of scripts automates the update process for Factorio and mods on linux using bash scripts.
 These scripts use the Factorio mod and version API to determine if you are currently running the latest version of Factorio and each mode.
 
-The mod update script tries to take into account dependency checking of the base game, to ensure you don't have issues if a mod has been updated for an experimental version, while you are still using stable for example. This dependency check is non-exhaustive.
+The mod update script tries to take into account dependency checking of the base game, to ensure you don't have issues if a mod has been updated for an experimental version, while you are still using stable for example. This dependency check is *non-exhaustive*.
 
 ## Prerequisites
-This bash script library requires `jq` be installed. You can install it on Ubuntu using the following command.
+This bash script library requires `jq` be installed ([more info here](https://jqlang.github.io/jq/download/)). You can install it on Ubuntu using the following command.
 ```bash
 sudo apt-get update && apt-get install jq
 ```
@@ -17,11 +17,11 @@ It is not required to have already installed Factorio to use this script, if you
 
 ## Copy scripts and setup set permissions
 
-Copy the `updateFactorio.sh`, `updateMods.sh`, and `updateFunctions.sh` to the root of your Factorio folder, eg `/op/factorio`. _Ensure these scripts have execute permissions._
+Copy the `updateFactorio.sh`, `updateMods.sh`, and `updateFunctions.sh` to the root of your Factorio folder, eg `/opt/factorio`. _Ensure these scripts have execute permissions._
 
-## Setup factorio.service
+## Setup factorio systemd service
 
-[This](./factorio.service) is an example systemd service file you can use to make Factorio auto start and update.
+[This](./factorio.service?raw=true) is an example systemd service file you can use to make Factorio auto start and update.
 You'll want to place this service in `/etc/systemd/system/factorio.service`.
 
 If you haven't created a service yet and want to just copy/paste the contents into Terminal you can use the following command to create it.
@@ -57,4 +57,3 @@ sudo systemctl start factorio
 ```shell
 sudo systemctl status factorio
 ```
-## 

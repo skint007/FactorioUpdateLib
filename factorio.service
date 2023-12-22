@@ -4,7 +4,7 @@ After=network-online.target
 [Service]
 Type=simple
 User=factorio
-Group=networkaccess
+Group=factorio
 TimeoutStartSec=0
 Restart=on-failure
 RestartSec=30s
@@ -12,7 +12,7 @@ WorkingDirectory=/opt/factorio
 ExecStartPre=/opt/factorio/updateFactorio.sh
 ExecStartPre=/opt/factorio/updateMods.sh --server-settings "/opt/factorio/data/saves/YourSaveGame.json" --basePath "/opt/factorio"
 ExecStart=/opt/factorio/bin/x64/factorio --start-server /opt/factorio/data/saves/YourSaveGame.zip --server-settings /opt/factorio/data/saves/YourSaveGame.json
-SyslogIdentifier=factoriosvr
+SyslogIdentifier=factorio
 UMask=002
 [Install]
 WantedBy=multi-user.target

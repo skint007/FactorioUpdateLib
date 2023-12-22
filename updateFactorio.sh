@@ -13,7 +13,8 @@ webVersion=$(curl -s "$updateCheckUrl" | jq -r '.stable.headless')
 updateHeadlessUrl="https://factorio.com/get-download/stable/headless/linux64"
 updateHeadlessFile="factorio_headless_x64_$webVersion.tar.xz"
 checksumsUrl="https://www.factorio.com/download/sha256sums/"
-basePath="$HOME/factoriosvr"
+basePath="/opt/factorio"
+#basePath="$HOME/factoriosvr"
 
 # Check for update
 echo "Checking for update"
