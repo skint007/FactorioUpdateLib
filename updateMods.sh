@@ -63,7 +63,7 @@ currentMods=0
 modCount=${#modNames[@]}
 echo -e "Checking \e[33m$modCount\e[0m mods for updates "
 
-oldIFS=$IFS
+# oldIFS=$IFS
 IFS=$'\n' # Fix for mod names with spaces
 
 # Get max mod name length - for formatting
@@ -133,8 +133,8 @@ for mod in "${checkMods[@]}"; do
 
         # Verify checksum
         modsha1=$(echo "$currentRelease" | jq -r '.sha1')
-        computedSha1=$(sha1sum $modFile | awk '{ print $1 }')
-        if [[ $modsha1 = $computedSha1 ]]; then
+        computedSha1=$(sha1sum "$modFile" | awk '{ print $1 }')
+        if [[ "$modsha1" = "$computedSha1" ]]; then
             echo -e "\e[0m[\e[32mDone\e[0m]"
             chmod 0775 "$modFile"
         else

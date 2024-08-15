@@ -1,3 +1,5 @@
+#!/bin/bash
+
 get_factorio_version() {
     local basePath=$1
     
@@ -17,10 +19,12 @@ get_factorio_version() {
     fi
     
     # Run the Factorio binary with --version and capture the output
-    local output=$("$binary_path" --version)
+    local output
+    output=$("$binary_path" --version)
     
     # Parse the output to extract the Factorio version
-    local version=$(echo "$output" | grep -oP 'Version: \K.*?(?= \()')
+    local version
+    version=$(echo "$output" | grep -oP 'Version: \K.*?(?= \()')
     
     # Output the version
     echo "$version"
@@ -50,5 +54,5 @@ join_by_comma() {
     # Restore the original IFS value.
     IFS=$oldIFS
 
-    echo $result
+    echo "$result"
 }
