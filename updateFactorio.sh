@@ -38,13 +38,13 @@ if [[ $fileVersion != $webVersion* ]]; then
         checksums=$(curl -s "$checksumsUrl")
         
         # Extract the sha256sum from the checksums string
-        downloadedSha256=$(echo "$checksums" | grep $updateHeadlessFile | awk '{ print $1 }')
+        downloadedSha256=$(echo "$checksums" | grep "$updateHeadlessFile" | awk '{ print $1 }')
         
         # Compute the sha256sum of the downloaded file
-        computedSha256=$(sha256sum $downloadPath | awk '{ print $1 }')
+        computedSha256=$(sha256sum "$downloadPath" | awk '{ print $1 }')
         
         # Compare the sha256sums
-        if [[ $downloadedSha256 = $computedSha256 ]]; then
+        if [[ $downloadedSha256 = "$computedSha256" ]]; then
             echo "Checksums match"
             # Change location for extracting, to just outside factorio folder
             echo "Extracting to: $basePath"
